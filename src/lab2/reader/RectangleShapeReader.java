@@ -1,6 +1,7 @@
 package lab2.reader;
 
 
+import lab2.ReaderUtil;
 import lab2.shape.Rectangle;
 import lab2.shape.Shape;
 
@@ -11,14 +12,11 @@ import java.io.InputStreamReader;
 public class RectangleShapeReader implements ShapeReader {
 
     @Override
-    public Shape readShape() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    public Shape readShape()  {
         System.out.println("enter the length of rectangle length: ");
-        int sideLength = Integer.valueOf(bufferedReader.readLine());
+        int sideLength = Integer.valueOf(ReaderUtil.readLine());
         System.out.println("enter the length of rectangle width: ");
-        int sideWidth = Integer.valueOf(bufferedReader.readLine());
-
-        bufferedReader.close();
+        int sideWidth = Integer.valueOf(ReaderUtil.readLine());
         return new Rectangle(sideLength, sideWidth);
     }
 }

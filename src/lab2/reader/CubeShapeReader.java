@@ -1,6 +1,7 @@
 package lab2.reader;
 
 
+import lab2.ReaderUtil;
 import lab2.shape.Cube;
 import lab2.shape.Shape;
 
@@ -11,11 +12,9 @@ import java.io.InputStreamReader;
 public class CubeShapeReader implements ShapeReader {
 
     @Override
-    public Shape readShape() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    public Shape readShape()  {
         System.out.println("enter the length of cube side: ");
-        int sideLength = Integer.valueOf(bufferedReader.readLine());
-        bufferedReader.close();
+        int sideLength = Integer.valueOf(ReaderUtil.readLine());
         return new Cube(sideLength);
     }
 }

@@ -19,6 +19,7 @@ public class ShapeReaderFactory {
         numberShapeReader.put(RECTANGLE.getType(), new RectangleShapeReader());
         numberShapeReader.put(SQUARE.getType(), new SquareShapeReader());
         numberShapeReader.put(TRIANGLE.getType(), new TriangleShapeReader());
+        numberShapeReader.put(PARALLELOGRAM.getType(), new ParallelogramReader());
     }
 
     public static ShapeReader reader(ShapeType shapeType) {
