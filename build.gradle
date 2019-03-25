@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'de.undercouch:bson4jackson:2.9.2'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+
+}
+
+// Define the main class for the application
+mainClassName = 'PTOOP2.App'
