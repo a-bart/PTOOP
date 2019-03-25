@@ -1,16 +1,16 @@
-package lab1.shape;
+package shape;
 
-public class Cube implements Shape {
+public class Square implements Shape {
 
     private int sideLength;
 
-    public Cube(int sideLength) {
+    public Square(int sideLength) {
         this.sideLength = sideLength;
     }
 
     @Override
     public String toString() {
-        return "Cube{" +
+        return "Square{" +
                 "sideLength=" + sideLength +
                 '}';
     }

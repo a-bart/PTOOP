@@ -1,7 +1,4 @@
-package main.java.lab2.shape;
-
-
-import main.java.lab2.ShapeData;
+package shape;
 
 public class Cube implements Shape {
 
@@ -19,7 +16,7 @@ public class Cube implements Shape {
     }
 
     @Override
-    public ShapeData getShapeData() {
-        return new ShapeData(toString());
+    public void draw() {
+        System.out.println(toString());
     }
 }

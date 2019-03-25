@@ -1,4 +1,4 @@
-package lab1.shape;
+package shape;
 
 public interface Shape {
     void draw();

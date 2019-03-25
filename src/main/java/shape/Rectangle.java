@@ -1,4 +1,4 @@
-package lab1.shape;
+package shape;
 
 public class Rectangle implements Shape {
     private int length;

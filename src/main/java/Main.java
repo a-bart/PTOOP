@@ -1,6 +1,4 @@
-package lab1;
-
-import lab1.shape.*;
+import shape.*;
 
 import java.util.ArrayList;
 import java.util.List;
