@@ -1,5 +1,6 @@
 package main.command;
 
+import main.ShapeDrawer;
 import main.repository.ShapeRepositories;
 import main.repository.ShapeRepository;
 import main.shape.Shape;
@@ -10,18 +11,21 @@ import java.util.List;
 public class RemoveShapeCommand implements Command {
 
     private ShapeRepository shapeRepository;
-    private Command getAllCommand;
+    private ShapeDrawer shapeDrawer;
+    private String commandName = "remove shape";
 
     public RemoveShapeCommand() {
         this.shapeRepository = ShapeRepositories.bsonShapeRepository();
-        this.getAllCommand = new ShowAllShapesCommand();
+        this.shapeDrawer = new ShapeDrawer();
+        CommandProvider.getInstance().registerCommand(this);
     }
 
     @Override
     public void execute() {
         while (true) {
-            getAllCommand.execute();
             List<Shape> shapes = shapeRepository.getAll();
+            shapeDrawer.drawAllShapes(shapes);
+            System.out.println();
             System.out.println("Enter the number of shape what you want to remove or \'cancel\' than canceled:");
             String result = ReaderUtil.readLine();
             if ("cancel".equals(result)) {
@@ -36,5 +40,10 @@ public class RemoveShapeCommand implements Command {
             System.out.println("Successful");
             System.out.println();
         }
+    }
+
+    @Override
+    public String commandName() {
+        return commandName;
     }
 }

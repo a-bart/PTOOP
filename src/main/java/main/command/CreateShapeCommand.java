@@ -7,12 +7,16 @@ import main.shape.Shape;
 import main.shape.ShapeType;
 import main.util.ReaderUtil;
 
+import java.util.Objects;
+
 public class CreateShapeCommand implements Command {
 
     private ShapeRepository shapeRepository;
+    private String commandName = "create shape";
 
     CreateShapeCommand() {
         this.shapeRepository = ShapeRepositories.bsonShapeRepository();
+        CommandProvider.getInstance().registerCommand(this);
     }
 
     @Override
@@ -37,5 +41,10 @@ public class CreateShapeCommand implements Command {
         } catch (Exception e) {
             System.out.println("Error during save shape");
         }
+    }
+
+    @Override
+    public String commandName() {
+        return commandName;
     }
 }

@@ -1,8 +1,10 @@
 package main;
 
-import main.command.CommandFactory;
-import main.command.CommandType;
+import main.command.Command;
+import main.command.CommandProvider;
 import main.util.ReaderUtil;
+import java.util.Comparator;
+import java.util.Map;
 
 public class MainClass {
 
@@ -11,22 +13,25 @@ public class MainClass {
     public static void main(String[] args) {
         System.out.println("Enter the path to bson file:");
         MainClass.filepath = ReaderUtil.readLine();
+        CommandProvider commandProvider = CommandProvider.getInstance();
+        Map<Integer, Command> commands = commandProvider.commands();
 
         while (true) {
             System.out.println("Enter command name:");
-            int i = 1;
-            for (CommandType commandType : CommandType.values()) {
-                System.out.println(i + " " + commandType.getDescription());
-                i++;
-            }
+
+            commands.entrySet()
+                    .stream()
+                    .sorted(Comparator.comparing(Map.Entry::getKey))
+                    .forEach(integerCommandEntry -> {
+                        System.out.println(integerCommandEntry.getKey() + " " + integerCommandEntry.getValue().commandName());
+                    });
 
             String command = ReaderUtil.readLine();
             if ("exit".equals(command)) {
                 System.out.println("Bye");
                 break;
             }
-            CommandType commandType = CommandType.of(Integer.valueOf(command));
-            CommandFactory.command(commandType).execute();
+
         }
     }
 }

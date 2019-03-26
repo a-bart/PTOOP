@@ -1,5 +1,6 @@
 package main.command;
 
+import main.ShapeDrawer;
 import main.reader.ShapeReaderFactory;
 import main.repository.ShapeRepositories;
 import main.repository.ShapeRepository;
@@ -11,18 +12,22 @@ import java.util.List;
 public class ModifyShapeCommand implements Command {
 
     private ShapeRepository shapeRepository;
-    private Command getAllCommand;
+    private String commandName = "modify shape";
+    private ShapeDrawer shapeDrawer;
+
 
     public ModifyShapeCommand() {
         this.shapeRepository = ShapeRepositories.bsonShapeRepository();
-        this.getAllCommand = new ShowAllShapesCommand();
+        CommandProvider.getInstance().registerCommand(this);
+        shapeDrawer = new ShapeDrawer();
     }
 
     @Override
     public void execute() {
         while (true) {
-            getAllCommand.execute();
             List<Shape> allShapes = shapeRepository.getAll();
+            shapeDrawer.drawAllShapes(allShapes);
+            System.out.println();
             System.out.println("Enter the number of shape what you want to change or \'cancel\' than canceled:");
             String result = ReaderUtil.readLine();
             if ("cancel".equals(result)) {
@@ -38,5 +43,10 @@ public class ModifyShapeCommand implements Command {
             shapeRepository.update(newShape);
             System.out.println("Update successful");
         }
+    }
+
+    @Override
+    public String commandName() {
+        return commandName;
     }
 }
