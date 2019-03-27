@@ -15,4 +15,9 @@ public class RectangleShapeReader implements ShapeReader {
         int sideWidth = Integer.valueOf(ReaderUtil.readLine());
         return new Rectangle(sideLength, sideWidth);
     }
+
+    @Override
+    public String shapeName() {
+        return "rectangle";
+    }
 }

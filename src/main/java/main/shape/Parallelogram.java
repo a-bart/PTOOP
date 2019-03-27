@@ -9,15 +9,12 @@ public class Parallelogram extends Shape implements Serializable {
     private int tiltAngle;
 
     public Parallelogram(int sideA, int sideB, int tiltAngle) {
-        super(ShapeType.PARALLELOGRAM);
         this.sideA = sideA;
         this.sideB = sideB;
         this.tiltAngle = tiltAngle;
     }
 
-    public Parallelogram() {
-        super(ShapeType.PARALLELOGRAM);
-    }
+    public Parallelogram() {}
 
     @Override
     public String toString() {

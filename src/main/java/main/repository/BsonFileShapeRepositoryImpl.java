@@ -25,6 +25,7 @@ public class BsonFileShapeRepositoryImpl implements ShapeRepository {
     public BsonFileShapeRepositoryImpl(String filepath) {
         this.file = filepath;
         this.objectMapper = new ObjectMapper(new BsonFactory());
+        this.objectMapper.enableDefaultTyping();
         boolean exists = Files.exists(Paths.get(file));
         if (!exists) {
             try {

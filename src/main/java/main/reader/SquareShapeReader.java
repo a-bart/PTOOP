@@ -12,4 +12,9 @@ public class SquareShapeReader implements ShapeReader {
         int sideLength = Integer.valueOf(ReaderUtil.readLine());
         return new Square(sideLength);
     }
+
+    @Override
+    public String shapeName() {
+        return "square";
+    }
 }

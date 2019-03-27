@@ -1,7 +1,7 @@
 package main.command;
 
-import main.ShapeDrawer;
-import main.reader.ShapeReaderFactory;
+import main.util.ShapeDrawer;
+import main.reader.ShapeReaderProvider;
 import main.repository.ShapeRepositories;
 import main.repository.ShapeRepository;
 import main.shape.Shape;
@@ -18,7 +18,6 @@ public class ModifyShapeCommand implements Command {
 
     public ModifyShapeCommand() {
         this.shapeRepository = ShapeRepositories.bsonShapeRepository();
-        CommandProvider.getInstance().registerCommand(this);
         shapeDrawer = new ShapeDrawer();
     }
 
@@ -38,7 +37,7 @@ public class ModifyShapeCommand implements Command {
                 continue;
             }
             Shape shape = allShapes.get(number - 1);
-            Shape newShape = ShapeReaderFactory.reader(shape.getShapeType()).readShape();
+            Shape newShape = ShapeReaderProvider.reader(number - 1).readShape();
             newShape.setId(shape.getId());
             shapeRepository.update(newShape);
             System.out.println("Update successful");

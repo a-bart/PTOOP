@@ -16,4 +16,9 @@ public class TriangleShapeReader implements ShapeReader {
         int thirdSide = Integer.valueOf(ReaderUtil.readLine());
         return new Triangle(firstSide, secondSide, thirdSide);
     }
+
+    @Override
+    public String shapeName() {
+        return "triangle";
+    }
 }

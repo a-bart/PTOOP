@@ -8,12 +8,11 @@ public class Cube extends Shape implements Serializable {
     private int sideLength;
 
     public Cube(int sideLength) {
-        super(ShapeType.CUBE);
         this.sideLength = sideLength;
     }
 
     public Cube() {
-        super(ShapeType.CUBE);
+
     }
 
     @Override

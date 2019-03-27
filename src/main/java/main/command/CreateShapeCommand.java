@@ -1,13 +1,12 @@
 package main.command;
 
-import main.reader.ShapeReaderFactory;
+import main.reader.ShapeReaderProvider;
 import main.repository.ShapeRepositories;
 import main.repository.ShapeRepository;
 import main.shape.Shape;
-import main.shape.ShapeType;
 import main.util.ReaderUtil;
 
-import java.util.Objects;
+import java.util.List;
 
 public class CreateShapeCommand implements Command {
 
@@ -16,30 +15,28 @@ public class CreateShapeCommand implements Command {
 
     CreateShapeCommand() {
         this.shapeRepository = ShapeRepositories.bsonShapeRepository();
-        CommandProvider.getInstance().registerCommand(this);
     }
 
     @Override
     public void execute() {
-        System.out.println("Enter the number of shape");
-        System.out.println("1. Circle");
-        System.out.println("2. Cube");
-        System.out.println("3. Rectangle");
-        System.out.println("4. Square");
-        System.out.println("5. Triangle");
-        System.out.println("6. Parallelogram");
+        List<String> readers = ShapeReaderProvider.readers();
+
+        for (int i = 1; i <= readers.size(); i++) {
+            String readerName = readers.get(i - 1);
+            System.out.println(i + " " + readerName);
+        }
 
         String line = ReaderUtil.readLine();
         if ("exit".equals(line)) return;
         try {
             int number = Integer.valueOf(line);
-            Shape shape = ShapeReaderFactory.reader(ShapeType.of(number)).readShape();
+            Shape shape = ShapeReaderProvider.reader(number - 1).readShape();
             shapeRepository.save(shape);
             System.out.println("Creating shape is successful\n");
         } catch (NumberFormatException ex) {
             System.out.println("Enter the number:");
         } catch (Exception e) {
-            System.out.println("Error during save shape");
+            e.printStackTrace();
         }
     }
 

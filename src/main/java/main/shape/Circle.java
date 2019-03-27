@@ -9,9 +9,7 @@ public class Circle extends Shape implements Serializable {
 
     private int radius;
 
-    public Circle() {
-        super(ShapeType.CIRCLE);
-    }
+    public Circle() {}
 
     public int getRadius() {
         return radius;

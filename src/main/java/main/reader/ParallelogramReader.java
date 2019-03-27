@@ -6,7 +6,7 @@ import main.util.ReaderUtil;
 
 public class ParallelogramReader implements ShapeReader {
     @Override
-    public Shape readShape()  {
+    public Shape readShape() {
         System.out.println("enter the length of parallelogram side 1: ");
         int side1Length = Integer.valueOf(ReaderUtil.readLine());
         System.out.println("enter the length of parallelogram side 2: ");
@@ -14,5 +14,10 @@ public class ParallelogramReader implements ShapeReader {
         System.out.println("enter the length of parallelogram tilt angle: ");
         int side3Length = Integer.valueOf(ReaderUtil.readLine());
         return new Parallelogram(side1Length, side2Length, side3Length);
+    }
+
+    @Override
+    public String shapeName() {
+        return "parallelogram";
     }
 }

@@ -1,6 +1,6 @@
 package main.command;
 
-import main.ShapeDrawer;
+import main.util.ShapeDrawer;
 import main.repository.ShapeRepositories;
 import main.repository.ShapeRepository;
 import main.shape.Shape;
@@ -15,7 +15,6 @@ public class ShowAllShapesCommand implements Command {
     public ShowAllShapesCommand() {
         this.shapeRepository = ShapeRepositories.bsonShapeRepository();
         this.shapeDrawer = new ShapeDrawer();
-        CommandProvider.getInstance().registerCommand(this);
     }
 
     @Override

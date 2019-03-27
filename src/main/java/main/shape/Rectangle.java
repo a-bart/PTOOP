@@ -8,14 +8,11 @@ public class Rectangle extends Shape implements Serializable {
     private int width;
 
     public Rectangle(int length, int width) {
-        super(ShapeType.RECTANGLE);
         this.length = length;
         this.width = width;
     }
 
-    public Rectangle() {
-        super(ShapeType.RECTANGLE);
-    }
+    public Rectangle() {}
 
     @Override
     public String toString() {

@@ -8,13 +8,10 @@ public class Square extends Shape implements Serializable {
     private int sideLength;
 
     public Square(int sideLength) {
-        super(ShapeType.SQUARE);
         this.sideLength = sideLength;
     }
 
-    public Square() {
-        super(ShapeType.SQUARE);
-    }
+    public Square() {}
 
     @Override
     public String toString() {

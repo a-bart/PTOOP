@@ -10,7 +10,6 @@ public class Triangle extends Shape implements Serializable {
     private int thirdSide;
 
     public Triangle(int firstSide, int secondSide, int thirdSide) {
-        super(ShapeType.TRIANGLE);
         if (firstSide + secondSide < thirdSide
                 || firstSide + thirdSide < secondSide
                 || secondSide + thirdSide < firstSide) {
@@ -21,9 +20,7 @@ public class Triangle extends Shape implements Serializable {
         this.thirdSide = thirdSide;
     }
 
-    public Triangle() {
-        super(ShapeType.TRIANGLE);
-    }
+    public Triangle() {}
 
     @Override
     public String toString() {

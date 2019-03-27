@@ -1,6 +1,6 @@
 package main.command;
 
-import main.ShapeDrawer;
+import main.util.ShapeDrawer;
 import main.repository.ShapeRepositories;
 import main.repository.ShapeRepository;
 import main.shape.Shape;
@@ -17,7 +17,6 @@ public class RemoveShapeCommand implements Command {
     public RemoveShapeCommand() {
         this.shapeRepository = ShapeRepositories.bsonShapeRepository();
         this.shapeDrawer = new ShapeDrawer();
-        CommandProvider.getInstance().registerCommand(this);
     }
 
     @Override
@@ -35,10 +34,11 @@ public class RemoveShapeCommand implements Command {
             if (number > shapes.size()) {
                 continue;
             }
-            Shape removeShape = shapes.get(number);
+            Shape removeShape = shapes.get(number - 1);
             shapeRepository.remove(removeShape.getId());
             System.out.println("Successful");
             System.out.println();
+            break;
         }
     }
 
