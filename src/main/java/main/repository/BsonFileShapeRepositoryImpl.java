@@ -22,7 +22,7 @@ public class BsonFileShapeRepositoryImpl implements ShapeRepository {
     private final String file;
     private ObjectMapper objectMapper;
 
-    public BsonFileShapeRepositoryImpl(String filepath) {
+    BsonFileShapeRepositoryImpl(String filepath) {
         this.file = filepath;
         this.objectMapper = new ObjectMapper(new BsonFactory());
         this.objectMapper.enableDefaultTyping();
