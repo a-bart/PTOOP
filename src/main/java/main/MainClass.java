@@ -8,11 +8,16 @@ import java.util.List;
 
 public class MainClass {
 
-    public static String filepath;
+    public static String filepath = "/Users/alexeybartashevich/Dev/Univer/PTOOP/storage/base.bson";
 
     public static void main(String[] args) {
-        System.out.println("Enter the path to bson file:");
-        MainClass.filepath = ReaderUtil.readLine();
+        System.out.println("Enter the path to bson file (or leave empty to use default):");
+        String newFilepath = ReaderUtil.readLine();
+        if (newFilepath != null && !newFilepath.isEmpty()) {
+            MainClass.filepath = newFilepath;
+        } else {
+            System.out.println("Will use default path: " + MainClass.filepath);
+        }
         CommandProvider commandProvider = CommandProvider.getInstance();
         List<Command> commands = commandProvider.commands();
 
