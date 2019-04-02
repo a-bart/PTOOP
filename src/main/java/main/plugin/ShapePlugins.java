@@ -3,28 +3,28 @@ package main.plugin;
 import main.shape.Shape;
 import org.reflections.Reflections;
 
-public class ShapeHandlers {
+public class ShapePlugins {
 
     private static boolean enable = false;
-    private static ShapeHandler ourInstance;
+    private static ShapePlugin ourInstance;
 
     static {
         Reflections reflections = new Reflections("main.plugin");
-        Class<? extends ShapeHandler> aClass = reflections.getSubTypesOf(ShapeHandler.class)
+        Class<? extends ShapePlugin> aClass = reflections.getSubTypesOf(ShapePlugin.class)
                 .stream()
                 .findFirst()
-                .orElse(DefaultShapeHandler.class);
+                .orElse(DefaultShapePlugin.class);
         try {
             ourInstance = aClass.newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
-            ourInstance = new DefaultShapeHandler();
+            ourInstance = new DefaultShapePlugin();
         }
     }
 
-    private ShapeHandlers() {
+    private ShapePlugins() {
     }
 
-    public static ShapeHandler shapeHandler() {
+    public static ShapePlugin shapeHandler() {
         return ourInstance;
     }
 
@@ -33,10 +33,10 @@ public class ShapeHandlers {
     }
 
     public static void setEnable(boolean enable) {
-        ShapeHandlers.enable = enable;
+        ShapePlugins.enable = enable;
     }
 
-    private static class DefaultShapeHandler implements ShapeHandler {
+    private static class DefaultShapePlugin implements ShapePlugin {
         @Override
         public void handle(Shape shape) {
 

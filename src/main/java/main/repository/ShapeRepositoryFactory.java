@@ -1,14 +1,14 @@
 package main.repository;
 
 import main.MainClass;
-import main.plugin.ShapeHandler;
-import main.plugin.ShapeHandlers;
+import main.plugin.ShapePlugin;
+import main.plugin.ShapePlugins;
 import main.shape.Shape;
 
 import java.util.Collection;
 import java.util.List;
 
-public class ShapeRepositories {
+public class ShapeRepositoryFactory {
     private static ShapeRepository shapeRepository;
 
     public static ShapeRepository bsonShapeRepository() {
@@ -21,32 +21,32 @@ public class ShapeRepositories {
     private static class ShapeRepositoryWrapper implements ShapeRepository {
 
         private ShapeRepository shapeRepository;
-        private ShapeHandler shapeHandler;
+        private ShapePlugin shapePlugin;
 
 
         ShapeRepositoryWrapper(String filepath) {
             shapeRepository = new BsonFileShapeRepositoryImpl(filepath);
-            shapeHandler = ShapeHandlers.shapeHandler();
+            shapePlugin = ShapePlugins.shapeHandler();
         }
 
         @Override
         public void save(Shape shape) {
-            if (ShapeHandlers.isEnable())
-                shapeHandler.handle(shape);
+            if (ShapePlugins.isEnable())
+                shapePlugin.handle(shape);
             shapeRepository.save(shape);
         }
 
         @Override
         public void saveAll(Collection<Shape> shapes) {
-            if (ShapeHandlers.isEnable())
-                shapes.forEach(shapeHandler::handle);
+            if (ShapePlugins.isEnable())
+                shapes.forEach(shapePlugin::handle);
             shapeRepository.saveAll(shapes);
         }
 
         @Override
         public void update(Shape shape) {
-            if (ShapeHandlers.isEnable())
-                shapeHandler.handle(shape);
+            if (ShapePlugins.isEnable())
+                shapePlugin.handle(shape);
             shapeRepository.update(shape);
         }
 

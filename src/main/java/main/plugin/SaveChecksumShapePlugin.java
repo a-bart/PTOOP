@@ -4,7 +4,7 @@ import main.shape.Shape;
 
 import java.util.Objects;
 
-public class SaveChecksumShapeHandler implements ShapeHandler {
+public class SaveChecksumShapePlugin implements ShapePlugin {
     @Override
     public void handle(Shape shape) {
         int hashCode = Objects.hashCode(shape);
