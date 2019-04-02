@@ -2,6 +2,6 @@ package main.plugin;
 
 import main.shape.Shape;
 
-public interface ShapeHandler {
+public interface ShapePlugin {
     void handle(Shape shape);
 }

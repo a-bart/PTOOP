@@ -1,7 +1,7 @@
 package main.command;
 
 import main.reader.ShapeReaderProvider;
-import main.repository.ShapeRepositories;
+import main.repository.ShapeRepositoryFactory;
 import main.repository.ShapeRepository;
 import main.shape.Shape;
 import main.util.ReaderUtil;
@@ -14,7 +14,7 @@ public class CreateShapeCommand implements Command {
     private String commandName = "create shape";
 
     CreateShapeCommand() {
-        this.shapeRepository = ShapeRepositories.bsonShapeRepository();
+        this.shapeRepository = ShapeRepositoryFactory.bsonShapeRepository();
     }
 
     @Override

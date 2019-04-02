@@ -1,7 +1,7 @@
 package main.command;
 
 import main.util.ShapeDrawer;
-import main.repository.ShapeRepositories;
+import main.repository.ShapeRepositoryFactory;
 import main.repository.ShapeRepository;
 import main.shape.Shape;
 
@@ -13,7 +13,7 @@ public class ShowAllShapesCommand implements Command {
     private String commandName = "show all shapes";
 
     public ShowAllShapesCommand() {
-        this.shapeRepository = ShapeRepositories.bsonShapeRepository();
+        this.shapeRepository = ShapeRepositoryFactory.bsonShapeRepository();
         this.shapeDrawer = new ShapeDrawer();
     }
 

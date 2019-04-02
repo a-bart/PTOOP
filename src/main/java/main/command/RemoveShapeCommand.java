@@ -1,7 +1,7 @@
 package main.command;
 
 import main.util.ShapeDrawer;
-import main.repository.ShapeRepositories;
+import main.repository.ShapeRepositoryFactory;
 import main.repository.ShapeRepository;
 import main.shape.Shape;
 import main.util.ReaderUtil;
@@ -15,7 +15,7 @@ public class RemoveShapeCommand implements Command {
     private String commandName = "remove shape";
 
     public RemoveShapeCommand() {
-        this.shapeRepository = ShapeRepositories.bsonShapeRepository();
+        this.shapeRepository = ShapeRepositoryFactory.bsonShapeRepository();
         this.shapeDrawer = new ShapeDrawer();
     }
 

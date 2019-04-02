@@ -12,6 +12,7 @@ public class MainClass {
 
     public static void main(String[] args) {
         System.out.println("Enter the path to bson file:");
+        // path to bson file
         MainClass.filepath = ReaderUtil.readLine();
         CommandProvider commandProvider = CommandProvider.getInstance();
         List<Command> commands = commandProvider.commands();
