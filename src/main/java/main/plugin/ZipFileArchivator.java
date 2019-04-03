@@ -10,9 +10,12 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public class ZipFileArchivator {
-    public void executeArchivation(String filepath) {
+    public void executeArchivation(String filepath, String outputFileName) {
+        if (outputFileName == null) {
+            outputFileName = "default";
+        }
         File file = new File(filepath);
-        try (ZipOutputStream zout = new ZipOutputStream(new FileOutputStream("test.zip"))) {
+        try (ZipOutputStream zout = new ZipOutputStream(new FileOutputStream(outputFileName + ".zip"))) {
             ZipEntry ze = new ZipEntry(file.getName());
             zout.putNextEntry(ze);
             Files.copy(Paths.get(file.getPath()), zout);

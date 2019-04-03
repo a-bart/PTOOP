@@ -13,7 +13,7 @@ public class ZipArchivationFileCommandAdapter implements Command {
 
     @Override
     public void execute() {
-        zipFileArchivator.executeArchivation(MainClass.filepath);
+        zipFileArchivator.executeArchivation(MainClass.filepath, null);
     }
 
     @Override
